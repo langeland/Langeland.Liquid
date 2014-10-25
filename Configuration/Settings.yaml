@@ -1,0 +1,29 @@
+#                                                                        #
+# Configuration for the TYPO3 Flow Framework                             #
+#                                                                        #
+# This file contains the default base configuration for the TYPO3 Flow   #
+# Framework. Don't modify this file but add configuration options to     #
+# the Settings.yaml file in the in global Configuration/ directory       #
+# instead.                                                               #
+#                                                                        #
+
+TYPO3:
+  Flow:
+    error:
+      exceptionHandler:
+
+        # Defines the global, last-resort exception handler.
+        # The specified class must implement \TYPO3\Flow\Error\ExceptionHandlerInterface
+        className: Langeland\Liquid\Error\ProductionExceptionHandler
+
+        # Rendering groups can define special renderings depending on status code or class of the
+        # thrown exception.
+        renderingGroups:
+
+          notFoundExceptions:
+            options:
+              templatePathAndFilename: 'resource://Langeland.Liquid/Private/Templates/Error/Default.html'
+
+          databaseConnectionExceptions:
+            options:
+              templatePathAndFilename: 'resource://Langeland.Liquid/Private/Templates/Error/Default.html'
