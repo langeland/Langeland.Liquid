@@ -2,7 +2,7 @@
 namespace Langeland\Liquid\Error;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow framework.                       *
+ * This script belongs to the Neos Flow framework.                       *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License, either version 3   *
@@ -11,14 +11,14 @@ namespace Langeland\Liquid\Error;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * A quite exception handler which catches but ignores any exception.
  *
  * @Flow\Scope("singleton")
  */
-class ProductionExceptionHandler extends \TYPO3\Flow\Error\ProductionExceptionHandler {
+class ProductionExceptionHandler extends \Neos\Flow\Error\ProductionExceptionHandler {
 
 
 	/**
@@ -29,7 +29,7 @@ class ProductionExceptionHandler extends \TYPO3\Flow\Error\ProductionExceptionHa
 	 * @return string
 	 */
 	protected function renderStatically($statusCode, $referenceCode) {
-		$statusMessage = \TYPO3\Flow\Http\Response::getStatusMessageByCode($statusCode);
+		$statusMessage = \Neos\Flow\Http\Response::getStatusMessageByCode($statusCode);
 		$referenceCodeMessage = ($referenceCode !== NULL) ? '<p>When contacting the maintainer of this application please mention the following reference code:<br /><br />' . $referenceCode . '</p>' : '';
 
 		return '<!DOCTYPE html>
