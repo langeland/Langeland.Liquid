@@ -1,8 +1,9 @@
 <?php
+
 namespace Langeland\Liquid\Error;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow framework.                       *
+ * This script belongs to the Neos Flow framework.                       *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License, either version 3   *
@@ -18,20 +19,22 @@ use Neos\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class ProductionExceptionHandler extends \Neos\Flow\Error\ProductionExceptionHandler {
+class ProductionExceptionHandler extends \Neos\Flow\Error\ProductionExceptionHandler
+{
 
     /**
-	 * Returns the statically rendered exception message
-	 *
-	 * @param integer $statusCode
-	 * @param string $referenceCode
-	 * @return string
-	 */
-	protected function renderStaticallyx(int $statusCode, ?string $referenceCode) {
-		$statusMessage = \Neos\Flow\Http\Response::getStatusMessageByCode($statusCode);
-		$referenceCodeMessage = ($referenceCode !== NULL) ? '<p>When contacting the maintainer of this application please mention the following reference code:<br /><br />' . $referenceCode . '</p>' : '';
+     * Returns the statically rendered exception message
+     *
+     * @param integer $statusCode
+     * @param string $referenceCode
+     * @return string
+     */
+    protected function renderStatically(int $statusCode, ?string $referenceCode): string
+    {
+        $statusMessage = \Neos\Flow\Http\Response::getStatusMessageByCode($statusCode);
+        $referenceCodeMessage = ($referenceCode !== NULL) ? '<p>When contacting the maintainer of this application please mention the following reference code:<br /><br />' . $referenceCode . '</p>' : '';
 
-		return '<!DOCTYPE html>
+        return '<!DOCTYPE html>
 			<html>
 				<head>
 					<meta charset="UTF-8">
@@ -118,6 +121,6 @@ class ProductionExceptionHandler extends \Neos\Flow\Error\ProductionExceptionHan
 					</div>
 				</body>
 			</html>';
-	}
+    }
 
 }
